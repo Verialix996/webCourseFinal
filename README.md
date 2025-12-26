@@ -7,3 +7,4 @@ You can view the deployed website here:
 👉 https://verialix996.github.io/webCourseFinal/
 
 ## 📁 Project Structure
+Home Page
