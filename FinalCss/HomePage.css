@@ -1,0 +1,207 @@
+/* --- הגדרות בסיס (Reset) --- */
+:root {
+    --primary-color: #2ecc71; /* ירוק רענן */
+    --secondary-color: #27ae60;
+    --dark-bg: #2c3e50;
+    --light-bg: #f9f9f9;
+    --text-color: #333;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+}
+
+/* --- עיצוב Header וניווט --- */
+.site-header {
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* לוגו בימין, תפריט בשמאל */
+    align-items: center;
+    flex-wrap: wrap; /* שבירה למובייל */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Hero Section (חלק עליון) --- */
+.hero {
+    /* תמונת רקע עם שכבת וינייט כהה לשמירה על ניגודיות הטקסט */
+    background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../FinalImg/Homepage1.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff; /* טקסט לבן על הרקע */
+    text-align: center;
+    padding: 6rem 2rem;
+    border-bottom: 5px solid rgba(255,255,255,0.12);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- Section Styling (כללי) --- */
+section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark-bg);
+}
+
+/* --- Grid Layouts (Action Cards & Menu) --- */
+.actions-grid, .menu-grid {
+    display: grid;
+    /* במחשב: 3 עמודות שוות. במובייל: ישתנה */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* --- עיצוב הכרטיסיות (Articles) --- */
+article {
+    /* glassy / blended background so cards blend with the hero image */
+    /* soft mint tint to replace plain white - complements --primary-color */
+    background: rgba(46,204,113,0.06); /* subtle green tint */
+    border: 1px solid rgba(46,204,113,0.12);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+    /* soft blur so the card blends with background images when supported */
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+article:hover {
+    transform: translateY(-5px); /* אפקט ריחוף קטן */
+    border-color: var(--primary-color);
+}
+
+/* כפתורים בתוך הכרטיסיות */
+.action-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+/* עיצוב ספציפי לכרטיסיות תפריט */
+.meal-time {
+    display: block;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.meal-card h3 {
+    margin: 0.5rem 0;
+    color: var(--dark-bg);
+}
+
+/* הדגשה לארוחת צהריים (רק בשביל הגיוון) */
+.meal-card.highlight {
+    /* match the regular article/card styling so this card looks the same */
+    border-top: none; /* keep no top border */
+    background: rgba(46,204,113,0.06); /* same subtle mint tint as other cards */
+    border: 1px solid rgba(46,204,113,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #bbb;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: white;
+    margin: 0 10px;
+}
+
+/* --- רספונסיביות (Media Queries) --- */
+@media (max-width: 768px) {
+    
+    /* הופך את הגריד לטור אחד במקום 3 */
+    .actions-grid, .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* התאמת הניווט למובייל (טור) */
+    .site-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
